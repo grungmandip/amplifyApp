@@ -12,12 +12,12 @@ const list = [
 	},
 	{
 		title: 'Redux',
-                url: 'https://redux.js.org',
-                author: 'Dan Abramov', 'Andrew Clark',
-                num_comments: d2,
-                points: 5,
-                objectID: 1,
-	},
+		url: 'https://redux.js.org',
+		author: 'Dan Abramov','Andrew Clark',
+		num_comments: d2,
+		points: 5,
+		objectID: 1,
+	}
 ];
 function App() {
   return (
