@@ -19,6 +19,14 @@ const App = () => {
 			num_comments: 2,
 			points: 5,
 			objectID: 1,
+		},
+		{
+			title: 'babel',
+			url: 'https://redux.js.org',
+			author: 'maharajan',
+			num_comments: 3,
+			points: 7,
+			objectID: 2,
 		}
 	];
 
