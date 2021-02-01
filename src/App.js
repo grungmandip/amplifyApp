@@ -46,6 +46,14 @@ const initialStories = [
 		num_comments: 4,
 		points: 9,
 		objectID: 3,
+	},
+	{
+		title: 'guppy',
+		url: 'https://guppy.co.jp',
+		author: 'guppy',
+		num_comments: 5,
+		points: 10,
+		objectID: 4,
 	}
 ];
 
