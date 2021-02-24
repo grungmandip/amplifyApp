@@ -1,15 +1,14 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import * as ROUTES from '../../constants/routes';
 
-const Home = () => (
+import {withAuthorization} from '../Session';
+
+const HomePage = () => (
     <div>
-        <ul>
-            <li>
-                <Link to={ROUTES.HOME}>Home</Link>
-            </li>
-        </ul>
+        <h1>Home Page</h1>
+        <p>The Home Page for your warmness.</p>
     </div>
-)
+);
 
-export default Home;
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(HomePage);
