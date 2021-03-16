@@ -19,16 +19,22 @@ const config = {
     messagingSenderId: '304162485178',
 };
 
+const REACT_APP_CONFIRMATION_EMAIL_REDIRECT='http://localhost:3000'
+
 class Firebase {
 
     constructor() {
         app.initializeApp(config)
 
+        this.emailAuthProvider = app.auth.EmailAuthProvider;
         this.auth = app.auth();
         this.db = app.database();
         // app.database.enableLogging(function(message) {
         //     console.log("[FIREBASE]", message);
         // });
+
+        this.googleProvider = new app.auth.GoogleAuthProvider();
+        this.facebookProvider = new app.auth.FacebookAuthProvider();
     }
 
     // *** AUTH API ***
@@ -38,12 +44,19 @@ class Firebase {
     doSignInWithEmailAndPassword = (email, password) =>
         this.auth.signInWithEmailAndPassword(email, password);
 
+    doSignInWithGoogle = () =>
+        this.auth.signInWithPopup(this.googleProvider);
+
+    doSignInWithFacebook = () =>
+        this.auth.signInWithPopup(this.facebookProvider);
+
     doSignOut = () => this.auth.signOut();
 
     doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
 
     doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 
+    // *** Merge Auth and DB(real) User API *** //
     onAuthUserListener = (next, fallback) =>
         this.auth.onAuthStateChanged(authUser => {
             if (authUser) {
@@ -61,6 +74,8 @@ class Firebase {
                         authUser = {
                             uid: authUser.uid,
                             email: authUser.email,
+                            emailVerified: authUser.emailVerified,
+                            providerData: authUser.providerData,
                             ...dbUser
                         };
 
@@ -69,6 +84,11 @@ class Firebase {
             } else {
                 fallback();
             }
+        });
+
+    doSendEmailVerification = () =>
+        this.auth.currentUser.sendEmailVerification({
+            url: REACT_APP_CONFIRMATION_EMAIL_REDIRECT,
         });
 
     // *** User API ***

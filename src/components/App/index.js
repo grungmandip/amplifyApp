@@ -1,4 +1,5 @@
 import React from 'react';
+import {StyledContainer, ItemCenter} from "./style";
 import {
     BrowserRouter as Router,
     Route,
@@ -18,19 +19,20 @@ import { withAuthentication } from '../Session';
 
 const App = () => (
     <Router>
-        <div>
+        <StyledContainer>
+            <h2>Menu</h2>
             <Navigation />
 
             <hr/>
 
             <Route exact path={ROUTES.LANDING} component={LandingPage}/>
-            <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
-            <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
-            <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgotPage}/>
+            <ItemCenter><Route path={ROUTES.SIGN_UP} component={SignUpPage}/></ItemCenter>
+            <ItemCenter><Route path={ROUTES.SIGN_IN} component={SignInPage}/></ItemCenter>
+            <ItemCenter><Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgotPage}/></ItemCenter>
             <Route path={ROUTES.HOME} component={HomePage}/>
             <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
             <Route path={ROUTES.ADMIN} component={AdminPage}/>
-        </div>
+        </StyledContainer>
     </Router>
 );
 
