@@ -5,3 +5,4 @@ export const HOME = '/home';
 export const ACCOUNT = '/Account';
 export const ADMIN = '/Admin';
 export const PASSWORD_FORGET = '/pw-forget';
+export const ADMIN_DETAILS = 'admin/:id';

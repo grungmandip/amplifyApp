@@ -41,21 +41,30 @@ class PasswordChangeForm extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <input
-                    type="password"
-                    name='passwordOne'
-                    value={passwordOne}
-                    onChange={this.onChange}
-                    placeholder="New Password"
-                />
-                <input
-                    type="password"
-                    name="passwordTwo"
-                    value={passwordTwo}
-                    onChange={this.onChange}
-                    placeholder="Confirm New Password"
-                />
-                <button disabled={isInvalid} type="submit">
+                <h5>PasswordChange</h5>
+                <div className="form-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        name='passwordOne'
+                        value={passwordOne}
+                        onChange={this.onChange}
+                        placeholder="New Password"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Password Confirm</label>
+                    <input
+                        type="password"
+                        className="form-control"
+                        name="passwordTwo"
+                        value={passwordTwo}
+                        onChange={this.onChange}
+                        placeholder="Confirm New Password"
+                    />
+                </div>
+                <button disabled={isInvalid} type="submit" className="btn btn-primary btn-block">
                     Reset My Password
                 </button>
 
