@@ -79,11 +79,17 @@ class UserListBase extends Component {
                             <div className="p-3 bg-white rounded">
                                 <div className="d-flex justify-content-between">
                                     <div className="d-flex flex-row align-items-center">
-                                        <div className="position-relative"><img src="https://i.imgur.com/EnANUqj.jpg" width="80" className="rounded-circle" /> <span className="position-absolute dots"></span></div>
-                                        <div className="ml-2">
-                                            <h5 className="mb-0">{user.username}</h5> <span>{user.email}</span>
-                                            <div className="d-flex flex-row"><span className="mr-3">1039 posts</span> <span
-                                                className="mr-3">42.9 followers</span> <span>930 following</span></div>
+                                        <div className="position-relative">
+                                            <img src="https://i.imgur.com/EnANUqj.jpg" width="80" className="rounded-circle" />
+                                            <span className="position-absolute dots"></span>
+                                            <div className="ml-2">
+                                                <h5 className="mb-0">{user.username}</h5> <span>{user.email}</span>
+                                                <div className="d-flex flex-row">
+                                                    <span className="mr-3">1039 posts</span>
+                                                    <span className="mr-3">42.9 followers</span>
+                                                    <span>930 following</span>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="mt-2">

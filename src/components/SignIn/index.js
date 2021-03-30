@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, ItemCenter} from "../App/style";
-import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {Link, withRouter} from "react-router-dom";
+import {GoogleLoginButton, FacebookLoginButton, TwitterLoginButton} from "react-social-login-buttons";
 import {compose} from 'recompose';
 
 import {SignUpLink} from '../SignUp';
@@ -10,6 +10,7 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../../constants/routes';
 
 const SignInPage = () => (
+    <ItemCenter>
     <Card>
         <SignInForm />
         <SignInGoogle />
@@ -17,6 +18,7 @@ const SignInPage = () => (
         <PasswordForgetLink />
         <SignUpLink />
     </Card>
+    </ItemCenter>
 );
 
 const INITIAL_STATE = {
@@ -67,7 +69,7 @@ class SignInFormBase extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <h3>Sign In</h3>
+                <h1>Sign In</h1>
                 <div className="form-group">
                     <label>Email</label>
                     <input
@@ -90,7 +92,7 @@ class SignInFormBase extends Component {
                         placeholder="Password"
                     />
                 </div>
-                <button disabled={isInvalid} type="submit" className="btn btn-primary btn-block">Sign In</button>
+                <button disabled={isInvalid} type="submit" className="btn btn-lg btn-primary btn-block">Sign In</button>
 
                 {error && <p>{error.message}</p>}
             </form>
@@ -137,10 +139,9 @@ class SignInGoogleBase extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <ItemCenter><button type="submit" className="btn btn-sm btn-google border-dark mt-3">
-                    <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="google"/>
-                    SignIn With Google
-                </button></ItemCenter>
+                <ItemCenter>
+                    <GoogleLoginButton>SignIn With Google</GoogleLoginButton>
+                </ItemCenter>
 
                 {error && <p>{error.message}</p>}
             </form>
@@ -187,16 +188,7 @@ class SignInFacebookBase extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-            <ItemCenter>
-                <button type="submit" className="btn btn-sm btn-facebook border-dark mt-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                         className="bi bi-facebook" viewBox="0 0 16 16">
-                        <path
-                            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                    </svg>
-                    SignIn with Facebook
-                </button>
-            </ItemCenter>
+            <ItemCenter><FacebookLoginButton>SignIn with Facebook</FacebookLoginButton></ItemCenter>
 
                 {error && <p>{error.message}</p>}
             </form>
