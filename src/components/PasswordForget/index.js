@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import {Card} from "../App/style";
+import {Card, ItemCenter} from "../App/style";
 import {Link} from "react-router-dom";
 
 import {withFirebase} from "../Firebase";
 import * as ROUTES from  '../../constants/routes';
 
 const PasswordForgetPage = () => (
-    <Card>
-        <PasswordForgetForm />
-    </Card>
+    <ItemCenter>
+        <Card><PasswordForgetForm /></Card>
+    </ItemCenter>
 );
 
 const INITIAL_STATE = {
@@ -48,19 +48,19 @@ class PasswordForgetFormBase extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <h5>PasswordForget</h5>
+                <h2>PasswordForget</h2>
                 <div className="form-group">
                     <label>Email</label>
                     <input
                         type="text"
                         name="email"
-                        className="form-control"
+                        className="form-control input-lg"
                         value={this.state.email}
                         onChange={this.onChange}
                         placeholder="Email Address"
                     />
                 </div>
-                <button disabled={isInvalid} type="submit" className="btn btn-primary btn-block">
+                <button disabled={isInvalid} type="submit" className="btn btn-lg btn-primary btn-block">
                     Reset My Password
                 </button>
 

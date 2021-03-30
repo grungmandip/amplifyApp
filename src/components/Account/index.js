@@ -6,6 +6,7 @@ import {PasswordForgetForm} from "../PasswordForget";
 import PasswordChangeForm from "../PasswordChange";
 import {AuthUserContext, withAuthorization, withEmailVerification} from "../Session";
 import {withFirebase} from "../Firebase";
+import MediaQuery from "react-responsive/src";
 
 const SIGN_IN_METHODS = [
     {
@@ -76,7 +77,7 @@ class  LoginManagementBase extends Component {
 
         return (
             <div>
-                SignIn Methods:
+                <span className="h4 mar-1">Change SignIn Methods:</span>
                 <ul className="list-group">
                     {SIGN_IN_METHODS.map(signInMethod => {
                         const onlyOneLeft = activeSignInMethods.length === 1;
@@ -193,10 +194,12 @@ const AccountPage = () => (
     <AuthUserContext.Consumer>
         {authUser => (
             <div>
-                <h5>Account:</h5> {authUser.email}
-                <ItemRight><PasswordForgetForm /></ItemRight><br/>
-                <ItemRight><PasswordChangeForm /></ItemRight><br/>
-                <LoginManagement authUser={authUser} />
+                <Card><span className="h3">Account: </span> <b className="h3">{authUser.username}</b></Card>
+                <MediaQuery query="(min-width: 767px)">
+                    <ItemRight><PasswordForgetForm /></ItemRight><br/>
+                    <ItemRight><PasswordChangeForm /></ItemRight><br/>
+                    <ItemRight><LoginManagement authUser={authUser} /></ItemRight>
+                </MediaQuery>
             </div>
         )}
     </AuthUserContext.Consumer>

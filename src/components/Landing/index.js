@@ -4,12 +4,9 @@ import * as ROUTES from '../../constants/routes';
 
 const Landing = () => (
     <div>
-        <ul>
-            <li>
-                <Link to={ROUTES.LANDING}>Landing</Link>
-            </li>
-        </ul>
+        <h1>Welcome To The Jungle</h1>
+        <p></p>
     </div>
-)
+);
 
 export default Landing;

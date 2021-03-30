@@ -1,5 +1,7 @@
 import React from 'react';
-import {StyledContainer, ItemCenter} from "./style";
+import './../../css/common.css'
+import {StyledContainerPc, StyledContainerSp, ItemCenter} from "./style";
+import MediaQuery from "react-responsive/src";
 import {
     BrowserRouter as Router,
     Route,
@@ -19,20 +21,32 @@ import { withAuthentication } from '../Session';
 
 const App = () => (
     <Router>
-        <StyledContainer>
-            <h2>Menu</h2>
-            <Navigation />
+        <MediaQuery query="(max-width: 767px)">
+            <StyledContainerSp>
+                <Navigation />
 
-            <hr/>
+                <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+                <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
+                <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgotPage}/>
+                <Route path={ROUTES.HOME} component={HomePage}/>
+                <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
+                <Route path={ROUTES.ADMIN} component={AdminPage}/>
+            </StyledContainerSp>
+        </MediaQuery>
+        <MediaQuery query="(min-width: 767px)">
+            <StyledContainerPc>
+                <Navigation />
 
-            <Route exact path={ROUTES.LANDING} component={LandingPage}/>
-            <ItemCenter><Route path={ROUTES.SIGN_UP} component={SignUpPage}/></ItemCenter>
-            <ItemCenter><Route path={ROUTES.SIGN_IN} component={SignInPage}/></ItemCenter>
-            <ItemCenter><Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgotPage}/></ItemCenter>
-            <Route path={ROUTES.HOME} component={HomePage}/>
-            <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
-            <Route path={ROUTES.ADMIN} component={AdminPage}/>
-        </StyledContainer>
+                <Route exact path={ROUTES.LANDING} component={LandingPage}/>
+                <Route path={ROUTES.SIGN_UP} component={SignUpPage}/>
+                <Route path={ROUTES.SIGN_IN} component={SignInPage}/>
+                <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgotPage}/>
+                <Route path={ROUTES.HOME} component={HomePage}/>
+                <Route path={ROUTES.ACCOUNT} component={AccountPage}/>
+                <Route path={ROUTES.ADMIN} component={AdminPage}/>
+            </StyledContainerPc>
+        </MediaQuery>
     </Router>
 );
 

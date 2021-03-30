@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Card} from "../App/style";
+import {Card, ItemCenter} from "../App/style";
 import {Link, withRouter} from "react-router-dom";
 import {compose} from 'recompose';
 
@@ -8,9 +8,9 @@ import * as ROUTES from '../../constants/routes';
 import * as ROLES from '../../constants/roles'
 
 const SignUpPage = () => (
-    <Card>
-        <SignUpForm />
-    </Card>
+    <ItemCenter>
+        <Card><SignUpForm /></Card>
+    </ItemCenter>
 );
 
 const INITIAL_STATE = {
@@ -99,13 +99,13 @@ class SignUpFormBase extends Component {
 
         return (
             <form onSubmit={this.onSubmit}>
-                <h3>Sign Up</h3>
+                <h1>Sign Up</h1>
                 <div className="form-group">
                     <label>Username</label>
                     <input
                         type="text"
                         name="username"
-                        className="form-control"
+                        className="form-control input-lg"
                         value={username}
                         onChange={this.onChange}
                         placeholder="Full Name"
@@ -116,7 +116,7 @@ class SignUpFormBase extends Component {
                     <input
                         type="text"
                         name="email"
-                        className="form-control"
+                        className="form-control input-lg"
                         value={email}
                         onChange={this.onChange}
                         placeholder="Email Address"
@@ -127,7 +127,7 @@ class SignUpFormBase extends Component {
                     <input
                         type="password"
                         name="passwordOne"
-                        className="form-control"
+                        className="form-control input-lg"
                         value={passwordOne}
                         onChange={this.onChange}
                         placeholder="Password"
@@ -138,19 +138,28 @@ class SignUpFormBase extends Component {
                     <input
                         type="password"
                         name="passwordTwo"
-                        className="form-control"
+                        className="form-control input-lg"
                         value={passwordTwo}
                         onChange={this.onChange}
                         placeholder="Confirm Password"
                     />
                 </div>
                 <div className="form-group">
-                    <div className="form-check">
-                        <input className="form-check-input" type="checkbox" id="gridCheck" name="isAdmin" checked={isAdmin} onChange={this.onChangeCheckbox}/>
-                        <label className="form-check-label" htmlFor="gridCheck">Admin:</label>
+                    <div className="input-group">
+                        <label className="form-check-label" htmlFor="gridCheck">Admin:
+                            <span className="input-group-addon">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    id="gridCheck"
+                                    name="isAdmin"
+                                    checked={isAdmin} onChange={this.onChangeCheckbox}
+                                />
+                            </span>
+                        </label>
                     </div>
                 </div>
-                <button disabled={isInvalid} type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                <button disabled={isInvalid} type="submit" className="btn btn-lg btn-primary btn-block">Sign Up</button>
 
                 {error && <p>{error.message}</p>}
             </form>
