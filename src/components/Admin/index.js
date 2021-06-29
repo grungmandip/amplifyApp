@@ -54,15 +54,8 @@ class UserListBase extends Component {
     }
 
     deleteThisUser = (userId) => {
-        const user = this.props.firebase
-            .user(userId);
-        user
-            .delete()
-            .then(() =>
-                console.log('Successfully deleted user'),
-                window.location.reload(false),
-            )
-            .catch(error => this.setState({error}));
+        this.props.firebase
+            .deleteThisUser(userId);
 
     }
 
@@ -124,7 +117,6 @@ class UserItemBase extends Component {
     constructor(props) {
         super(props);
 
-        console.log(props);
         this.state = {
             loading: false,
             user: null,
@@ -133,7 +125,6 @@ class UserItemBase extends Component {
     }
 
     componentDidMount() {
-        console.log(this.state.user);
         if (this.state.user) {
             return;
         }
@@ -163,19 +154,19 @@ class UserItemBase extends Component {
 
         return (
             <div>
-                <h2>User ({this.props.match.params.id})</h2>
+                <h2>User ({user.email})</h2>
                 {loading && <div>Loading ...</div>}
 
                 {user && (
                     <div>
                         <span>
-                            <strong>ID:</strong> {user.uid}
+                            <strong>Username:</strong> {user.username}
+                        </span>
+                        <span>
+                            <strong>Message:</strong> {user.message}
                         </span>
                         <span>
                             <strong>E-Mail:</strong> {user.email}
-                        </span>
-                        <span>
-                            <strong>Username:</strong> {user.username}
                         </span>
                         <span>
                             <button type="button" onClick={this.onSendPasswordResetEmail}>

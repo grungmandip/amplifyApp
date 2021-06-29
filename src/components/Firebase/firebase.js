@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/storage';
 
 // const config = {
 //     apiKey: process.env.REACT_APP_API_KEY,
@@ -29,6 +30,7 @@ class Firebase {
         this.emailAuthProvider = app.auth.EmailAuthProvider;
         this.auth = app.auth();
         this.db = app.database();
+        this.store = app.storage();
         // app.database.enableLogging(function(message) {
         //     console.log("[FIREBASE]", message);
         // });
@@ -95,6 +97,11 @@ class Firebase {
     user = uid => this.db.ref(`users/${uid}`);
 
     users = () => this.db.ref('users');
+
+
+    deleteThisUser = (userId) => {
+        this.db.ref(`users/${userId}`).remove();
+    }
 }
 
 export default Firebase;
