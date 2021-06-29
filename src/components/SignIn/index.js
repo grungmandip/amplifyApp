@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, ItemCenter} from "../App/style";
-import {Link, withRouter} from "react-router-dom";
-import {GoogleLoginButton, FacebookLoginButton, TwitterLoginButton} from "react-social-login-buttons";
+import {withRouter} from "react-router-dom";
+import {GoogleLoginButton, FacebookLoginButton} from "react-social-login-buttons";
 import {compose} from 'recompose';
 
 import {SignUpLink} from '../SignUp';
